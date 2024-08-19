@@ -33,3 +33,101 @@ def text_preprocessing(text):
     #remove_stopwords = [w for w in tokenized_text if w not in stopwords.words('english')]
     combined_text = ' '.join(tokenized_text)
     return combined_text
+
+def find_best_hyperparametered_model(model_name, model, X_train_vect, y_train):
+    from sklearn.model_selection import GridSearchCV
+    from sklearn.model_selection import RandomizedSearchCV
+    import numpy as np
+
+    if model_name == "SVM":
+        print("SVM Parameter tuning Started ...")
+
+        # Define the parameter distribution for SVM
+        param_dist = {
+            'C': np.logspace(-3, 3, 10),  # Regularization parameter
+            'kernel': ['linear', 'rbf', 'poly', 'sigmoid'],  # Kernel type
+            'gamma': ['scale', 'auto']  # Kernel coefficient
+        }
+
+        # Instantiate the RandomizedSearchCV object
+        random_search = RandomizedSearchCV(model, param_distributions=param_dist, n_iter=100, cv=5, scoring='accuracy', random_state=42)
+
+        # Fit on the training data
+        random_search.fit(X_train_vect, y_train)
+
+        # Print the best parameters and the best score
+        print("Best Parameters:", random_search.best_params_)
+        print("Best Score:", random_search.best_score_)
+        print("SVM Parameter tuning Finished.")
+
+        return grid_search
+    
+    elif model_name == "Naive_Bayes":
+        print("Naive Bayes Parameter tuning Started ...")
+
+        # Define the parameter grid for Naive Bayes
+        param_grid = {
+            'alpha': [0.1, 0.5, 1.0, 5.0, 10.0]  # Smoothing parameter
+        }
+
+        # Instantiate the GridSearchCV object
+        grid_search = GridSearchCV(model, param_grid, cv=5, scoring='accuracy')
+
+        # Fit on the training data
+        grid_search.fit(X_train_vect, y_train)
+
+        # Print the best parameters and the best score
+        print("Best Parameters:", grid_search.best_params_)
+        print("Best Score:", grid_search.best_score_)
+        print("Naive Bayes Parameter tuning Finished.")
+
+        return grid_search
+
+    elif model_name == "Logistic":
+        print("Logistic Parameter tuning Started ...")
+
+        # Define the parameter distribution for Logistic Regression
+        param_dist = {
+            'C': np.logspace(-3, 3, 10),  # Regularization strength
+            'penalty': ['l1', 'l2', 'elasticnet', None],  # Regularization type
+            'solver': ['lbfgs', 'liblinear', 'saga']  # Solvers for optimization
+        }
+
+        # Instantiate the RandomizedSearchCV object
+        random_search = RandomizedSearchCV(model, param_distributions=param_dist, n_iter=100, cv=5, scoring='accuracy', random_state=42)
+
+        # Fit on the training data
+        random_search.fit(X_train_vect, y_train)
+
+        # Print the best parameters and the best score
+        print("Best Parameters:", random_search.best_params_)
+        print("Best Score:", random_search.best_score_)
+        print("Logistic Regression Parameter tuning Finished.")
+
+        return grid_search
+
+    elif model_name == "RandomForest":
+        print("Random Forest tuning Started ...")
+
+        # Define the parameter grid
+        param_grid = {
+            'n_estimators': [100, 200, 300, 400, 500],  # Number of trees
+            'max_depth': [None, 10, 20, 30, 40, 50],  # Maximum depth of each tree
+            'min_samples_split': [2, 5, 10],  # Minimum number of samples required to split an internal node
+            'min_samples_leaf': [1, 2, 4],  # Minimum number of samples required to be at a leaf node
+            'bootstrap': [True, False]  # Whether bootstrap samples are used when building trees
+        }
+
+        # Instantiate the GridSearchCV object
+        grid_search = GridSearchCV(model , param_grid, cv=5, scoring='accuracy', n_jobs=-1)
+
+        # Fit the grid search to the data
+        grid_search.fit(X_train_vect, y_train)
+
+        # Print the best parameters and the best score
+        print("Best Parameters:", grid_search.best_params_)
+        print("Best Score:", grid_search.best_score_)
+        print("Random Forest Parameter tuning Finished.")
+
+        return grid_search
+
