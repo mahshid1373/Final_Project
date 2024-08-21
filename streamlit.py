@@ -144,7 +144,7 @@ with tab3:
     X_test_vect_dense = X_test_vect.toarray()
 
     # st.dataframe(X_test_vect_dense)
-    predictions = model.predict(X_test_vect_dense)
+    predictions = model.predict(cleaned_data_feature)
 
     # # Step 5: Display the predictions
     # st.subheader("Predictions")
