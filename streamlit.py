@@ -132,11 +132,11 @@ with tab3:
 
     # Vectorize the text data
     cleaned_data = clean_data(df)
+
     vectorizer = CountVectorizer(stop_words='english')
-    X_train_vect = vectorizer.fit_transform(cleaned_data)
-    X_test_vect = vectorizer.transform(cleaned_data)
-    print(X_test_vect)
-    X_test_vect.to_csv("vecccccc.csv")
+    X_test_vect = vectorizer.fit_transform(cleaned_data)
+    # X_test_vect = vectorizer.transform(cleaned_data)
+
     st.dataframe(X_test_vect)
     # predictions = model.predict(X_test_vect)
 
