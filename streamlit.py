@@ -138,7 +138,7 @@ with tab3:
     X_test_vect = vectorizer.fit_transform(cleaned_data_feature)
     # X_test_vect = vectorizer.transform(cleaned_data)
 
-    st.dataframe(X_test_vect)
+    st.dataframe(cleaned_data_feature)
 
     # Optionally convert sparse matrix to dense, but beware of memory usage
     # X_test_vect_dense = X_test_vect.toarray()
