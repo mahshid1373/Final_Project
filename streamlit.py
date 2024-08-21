@@ -136,21 +136,22 @@ with tab3:
     X_train_vect = vectorizer.fit_transform(cleaned_data)
     X_test_vect = vectorizer.transform(cleaned_data)
     print(X_test_vect)
-    predictions = model.predict(X_test_vect)
+    st.dataframe(X_test_vect)
+    # predictions = model.predict(X_test_vect)
 
-    # Step 5: Display the predictions
-    st.subheader("Predictions")
-    cleaned_data['Prediction'] = predictions
-    st.dataframe(cleaned_data)
+    # # Step 5: Display the predictions
+    # st.subheader("Predictions")
+    # cleaned_data['Prediction'] = predictions
+    # st.dataframe(cleaned_data)
     
-    # Optionally, allow users to download the results
-    csv = cleaned_data.to_csv(index=False).encode('utf-8')
-    st.download_button(
-        label="Download Predictions as CSV",
-        data=csv,
-        file_name='predictions.csv',
-        mime='text/csv',
-    )
+    # # Optionally, allow users to download the results
+    # csv = cleaned_data.to_csv(index=False).encode('utf-8')
+    # st.download_button(
+    #     label="Download Predictions as CSV",
+    #     data=csv,
+    #     file_name='predictions.csv',
+    #     mime='text/csv',
+    # )
 
 
 # Content for Tab 1
