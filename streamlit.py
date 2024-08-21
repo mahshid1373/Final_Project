@@ -168,7 +168,7 @@ with tab3:
     xgb_model.fit(X_train_vect, cleaned_data_target)
 
     # st.dataframe(X_test_vect_dense)
-    predictions = model.predict(cleaned_data_feature)
+    predictions = xgb_model.predict(cleaned_data_feature)
 
     # # Step 5: Display the predictions
     # st.subheader("Predictions")
