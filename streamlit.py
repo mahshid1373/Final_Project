@@ -137,7 +137,7 @@ with tab3:
     X_test_vect = vectorizer.transform(cleaned_data)
     # print(X_test_vect)
     st.write(X_test_vect)
-    predictions = model.predict(X_test_vect)
+    # predictions = model.predict(X_test_vect)
 
     # # Step 5: Display the predictions
     # st.subheader("Predictions")
