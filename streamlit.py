@@ -135,7 +135,7 @@ with tab3:
     vectorizer = CountVectorizer(stop_words='english')
     X_train_vect = vectorizer.fit_transform(cleaned_data)
     X_test_vect = vectorizer.transform(cleaned_data)
-    # print(X_test_vect)
+    print(X_test_vect)
     # st.dataframe(X_test_vect)
     # predictions = model.predict(X_test_vect)
 
