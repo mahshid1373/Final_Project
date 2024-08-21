@@ -137,7 +137,7 @@ with tab3:
     cleaned_data_feature = cleaned_data["text"]
     cleaned_data_target = cleaned_data["sentiment"]    
     vectorizer = CountVectorizer(stop_words='english')
-    X_test_vect = vectorizer.fit_transform(cleaned_data_feature)
+    X_train_vect = vectorizer.fit_transform(cleaned_data_feature)
     X_test_vect = vectorizer.transform(cleaned_data_feature)
 
     # st.dataframe(X_test_vect)
@@ -149,7 +149,7 @@ with tab3:
     xgb_model = xgb.XGBClassifier(use_label_encoder=False, eval_metric='mlogloss')
 
     # Fit the model
-    xgb_model.fit(cleaned_data_feature, cleaned_data_target)
+    xgb_model.fit(X_train_vect, cleaned_data_target)
 
     # st.dataframe(X_test_vect_dense)
     # predictions = model.predict(cleaned_data_feature)
