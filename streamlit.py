@@ -7,6 +7,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 from PIL import Image
 from streamlit_function import *
+import pickle
+from sklearn.feature_extraction.text import CountVectorizer
 
 # Title of the Streamlit app
 # st.title("Twitter Sentiment Analyzer")
@@ -61,7 +63,7 @@ st.sidebar.markdown("Created by Mahshid Khatami")
 #################################################################################################################################
 
 # Create tabs
-tab1, tab2 = st.tabs(["🧮 Sentiment Analyze 🧮", "🗂 Download Clean Data 🗂"])
+tab1, tab2, tab3 = st.tabs(["🧮 Sentiment Analyze 🧮", "🗂 Download Clean Data 🗂", "🪛 Apply ML Models On Data 🪛"])
 
 
 # Content for Tab 2
@@ -112,6 +114,39 @@ with tab2:
         label="Download data as CSV",
         data=csv,
         file_name='cleaned_data.csv',
+        mime='text/csv',
+    )
+
+# Content for Tab 3
+with tab3:
+    # Load the trained XGBoost model from the .pkl file
+    model_filename = 'xgboost_model.pkl'
+    with open(model_filename, 'rb') as file:
+        model = pickle.load(file)
+
+    # Title for the app
+    st.title("XGBoost Model Prediction")
+
+    st.write("Preview of Uploaded Test Data:")
+    st.dataframe(cleaned_data)
+
+    # Vectorize the text data
+    vectorizer = CountVectorizer(stop_words='english')
+    X_test_vect = vectorizer.transform(cleaned_data)
+
+    predictions = model.predict(cleaned_data[X_test_vect])
+
+    # Step 5: Display the predictions
+    st.subheader("Predictions")
+    cleaned_data['Prediction'] = predictions
+    st.dataframe(cleaned_data)
+    
+    # Optionally, allow users to download the results
+    csv = cleaned_data.to_csv(index=False).encode('utf-8')
+    st.download_button(
+        label="Download Predictions as CSV",
+        data=csv,
+        file_name='predictions.csv',
         mime='text/csv',
     )
 
