@@ -128,10 +128,10 @@ with tab3:
     st.title("XGBoost Model Prediction")
 
     st.write("Preview of Uploaded Test Data:")
-    st.dataframe(cleaned_data)
-
+ 
     # Vectorize the text data
     cleaned_data = clean_data(df)
+    st.dataframe(cleaned_data)
 
     vectorizer = CountVectorizer(stop_words='english')
     X_test_vect = vectorizer.fit_transform(cleaned_data)
@@ -141,7 +141,7 @@ with tab3:
     X_test_vect_dense = X_test_vect.toarray()
 
     st.dataframe(X_test_vect_dense)
-    predictions = model.predict(X_test_vect_dense)
+    # predictions = model.predict(X_test_vect_dense)
 
     # # Step 5: Display the predictions
     # st.subheader("Predictions")
