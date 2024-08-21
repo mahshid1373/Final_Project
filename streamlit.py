@@ -175,14 +175,14 @@ with tab3:
     cleaned_data['Prediction'] = predictions
     st.dataframe(cleaned_data)
     
-    # # Optionally, allow users to download the results
-    # csv = cleaned_data.to_csv(index=False).encode('utf-8')
-    # st.download_button(
-    #     label="Download Predictions as CSV",
-    #     data=csv,
-    #     file_name='predictions.csv',
-    #     mime='text/csv',
-    # )
+    # Optionally, allow users to download the results
+    csv = cleaned_data.to_csv(index=False).encode('utf-8')
+    st.download_button(
+        label="Download Predictions as CSV",
+        data=csv,
+        file_name='predictions.csv',
+        mime='text/csv',
+    )
 
 
 # Content for Tab 1
