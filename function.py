@@ -130,4 +130,32 @@ def find_best_hyperparametered_model(model_name, model, X_train_vect, y_train):
         print("Random Forest Parameter tuning Finished.")
 
         return grid_search
+    
+    elif model_name == "XGBoost":
+        print("XGBoost tuning Started ...")
+
+        # Define the parameter grid
+        param_grid = {
+            'n_estimators': [100, 200, 300],
+            'max_depth': [3, 5, 7],
+            'learning_rate': [0.01, 0.1, 0.2],
+            'subsample': [0.8, 1.0],
+            'colsample_bytree': [0.8, 1.0],
+            'gamma': [0, 0.1, 0.2],
+            'reg_alpha': [0, 0.1, 0.5],
+            'reg_lambda': [1, 1.5, 2]
+        }
+
+        # Instantiate the GridSearchCV object
+        grid_search = GridSearchCV(estimator=model, param_grid=param_grid, cv=5, scoring='accuracy', n_jobs=-1, verbose=1)
+
+        # Fit the grid search to the data
+        grid_search.fit(X_train_vect, y_train)
+
+        # Print the best parameters and the best score
+        print("Best Parameters:", grid_search.best_params_)
+        print("Best Score:", grid_search.best_score_)
+        print("XGBoost Parameter tuning Finished.")
+
+        return grid_search
 
