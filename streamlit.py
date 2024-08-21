@@ -130,13 +130,13 @@ with tab3:
     st.write("Preview of Uploaded Test Data:")
     st.dataframe(cleaned_data)
 
-    # Vectorize the text data
-    cleaned_data = clean_data(df)
-    vectorizer = CountVectorizer(stop_words='english')
-    X_train_vect = vectorizer.fit_transform(cleaned_data)
-    X_test_vect = vectorizer.transform(cleaned_data)
-    # print(X_test_vect)
-    st.write(X_test_vect)
+    # # Vectorize the text data
+    # cleaned_data = clean_data(df)
+    # vectorizer = CountVectorizer(stop_words='english')
+    # X_train_vect = vectorizer.fit_transform(cleaned_data)
+    # X_test_vect = vectorizer.transform(cleaned_data)
+    # # print(X_test_vect)
+    # st.write(X_test_vect)
     # predictions = model.predict(X_test_vect)
 
     # # Step 5: Display the predictions
