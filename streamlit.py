@@ -143,7 +143,7 @@ with tab3:
     # Optionally convert sparse matrix to dense, but beware of memory usage
     X_test_vect_dense = X_test_vect.toarray()
 
-    st.dataframe(X_test_vect_dense)
+    # st.dataframe(X_test_vect_dense)
     # predictions = model.predict(X_test_vect_dense)
 
     # # Step 5: Display the predictions
