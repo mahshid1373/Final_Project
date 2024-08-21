@@ -137,7 +137,10 @@ with tab3:
     X_test_vect = vectorizer.fit_transform(cleaned_data)
     # X_test_vect = vectorizer.transform(cleaned_data)
 
-    st.dataframe(X_test_vect)
+    # Optionally convert sparse matrix to dense, but beware of memory usage
+    X_test_vect_dense = X_test_vect.toarray()
+
+    st.dataframe(X_test_vect_dense)
     # predictions = model.predict(X_test_vect)
 
     # # Step 5: Display the predictions
