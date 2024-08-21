@@ -136,7 +136,7 @@ with tab3:
     X_train_vect = vectorizer.fit_transform(cleaned_data)
     X_test_vect = vectorizer.transform(cleaned_data)
 
-    predictions = model.predict(cleaned_data[X_test_vect])
+    predictions = model.predict(X_test_vect)
 
     # Step 5: Display the predictions
     st.subheader("Predictions")
