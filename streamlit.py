@@ -10,6 +10,7 @@ from streamlit_function import *
 import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 import xgboost as xgb
+from sklearn.preprocessing import LabelEncoder
 
 # Title of the Streamlit app
 # st.title("Twitter Sentiment Analyzer")
@@ -134,11 +135,26 @@ with tab3:
     cleaned_data = clean_data(df)
     st.dataframe(cleaned_data)
 
+
+    # Initialize the LabelEncoder
+    label_encoder = LabelEncoder()
+
+    # Fit and transform the data
+    cleaned_data['sentiment'] = label_encoder.fit_transform(cleaned_data['sentiment'])
+
+    
     cleaned_data_feature = cleaned_data["text"]
     cleaned_data_target = cleaned_data["sentiment"]    
     vectorizer = CountVectorizer(stop_words='english')
     X_train_vect = vectorizer.fit_transform(cleaned_data_feature)
     X_test_vect = vectorizer.transform(cleaned_data_feature)
+
+
+
+
+
+
+
 
     # st.dataframe(X_test_vect)
 
@@ -147,7 +163,7 @@ with tab3:
 
     # Instantiate the XGBoost model
     xgb_model = xgb.XGBClassifier(use_label_encoder=False, eval_metric='mlogloss')
-
+    
     # Fit the model
     xgb_model.fit(X_train_vect, cleaned_data_target)
 
