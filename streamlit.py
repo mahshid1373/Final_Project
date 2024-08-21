@@ -171,9 +171,9 @@ with tab3:
     predictions = xgb_model.predict(X_test_vect)
 
     # # Step 5: Display the predictions
-    # st.subheader("Predictions")
-    # cleaned_data['Prediction'] = predictions
-    # st.dataframe(cleaned_data)
+    st.subheader("Predictions")
+    cleaned_data['Prediction'] = predictions
+    st.dataframe(cleaned_data)
     
     # # Optionally, allow users to download the results
     # csv = cleaned_data.to_csv(index=False).encode('utf-8')
