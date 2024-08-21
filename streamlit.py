@@ -133,8 +133,9 @@ with tab3:
     cleaned_data = clean_data(df)
     st.dataframe(cleaned_data)
 
+    cleaned_data_feature = cleaned_data["text"]
     vectorizer = CountVectorizer(stop_words='english')
-    X_test_vect = vectorizer.fit_transform(cleaned_data)
+    X_test_vect = vectorizer.fit_transform(cleaned_data_feature)
     # X_test_vect = vectorizer.transform(cleaned_data)
 
     # Optionally convert sparse matrix to dense, but beware of memory usage
