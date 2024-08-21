@@ -131,7 +131,9 @@ with tab3:
     st.dataframe(cleaned_data)
 
     # Vectorize the text data
+    cleaned_data = clean_data(df)
     vectorizer = CountVectorizer(stop_words='english')
+    X_train_vect = vectorizer.fit_transform(cleaned_data)
     X_test_vect = vectorizer.transform(cleaned_data)
 
     predictions = model.predict(cleaned_data[X_test_vect])
