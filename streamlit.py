@@ -142,7 +142,7 @@ with tab3:
     # Fit and transform the data
     cleaned_data['sentiment'] = label_encoder.fit_transform(cleaned_data['sentiment'])
 
-    
+
     cleaned_data_feature = cleaned_data["text"]
     cleaned_data_target = cleaned_data["sentiment"]    
     vectorizer = CountVectorizer(stop_words='english')
@@ -168,7 +168,7 @@ with tab3:
     xgb_model.fit(X_train_vect, cleaned_data_target)
 
     # st.dataframe(X_test_vect_dense)
-    # predictions = model.predict(cleaned_data_feature)
+    predictions = model.predict(cleaned_data_feature)
 
     # # Step 5: Display the predictions
     # st.subheader("Predictions")
