@@ -4,7 +4,9 @@ import re
 import string 
 import nltk
 from nltk.corpus import stopwords
-
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RandomizedSearchCV
+import numpy as np
 
 def clean_text_syntax(text):
     """
@@ -35,9 +37,7 @@ def text_preprocessing(text):
     return combined_text
 
 def find_best_hyperparametered_model(model_name, model, X_train_vect, y_train):
-    from sklearn.model_selection import GridSearchCV
-    from sklearn.model_selection import RandomizedSearchCV
-    import numpy as np
+
 
     if model_name == "SVM":
         print("SVM Parameter tuning Started ...")
