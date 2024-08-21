@@ -176,6 +176,7 @@ with tab3:
     st.dataframe(cleaned_data)
     
     # Optionally, allow users to download the results
+    st.write("Download The Prediction of Uploaded Test Data:")
     csv = cleaned_data.to_csv(index=False).encode('utf-8')
     st.download_button(
         label="Download Predictions as CSV",
