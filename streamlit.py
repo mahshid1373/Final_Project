@@ -9,6 +9,7 @@ from PIL import Image
 from streamlit_function import *
 import pickle
 from sklearn.feature_extraction.text import CountVectorizer
+import xgboost as xgb
 
 # Title of the Streamlit app
 # st.title("Twitter Sentiment Analyzer")
@@ -134,6 +135,7 @@ with tab3:
     st.dataframe(cleaned_data)
 
     cleaned_data_feature = cleaned_data["text"]
+    cleaned_data_target = cleaned_data["sentiment"]    
     vectorizer = CountVectorizer(stop_words='english')
     X_test_vect = vectorizer.fit_transform(cleaned_data_feature)
     X_test_vect = vectorizer.transform(cleaned_data_feature)
@@ -143,8 +145,14 @@ with tab3:
     # Optionally convert sparse matrix to dense, but beware of memory usage
     X_test_vect_dense = X_test_vect.toarray()
 
+    # Instantiate the XGBoost model
+    xgb_model = xgb.XGBClassifier(use_label_encoder=False, eval_metric='mlogloss')
+
+    # Fit the model
+    xgb_model.fit(cleaned_data_feature, cleaned_data_target)
+
     # st.dataframe(X_test_vect_dense)
-    predictions = model.predict(cleaned_data_feature)
+    # predictions = model.predict(cleaned_data_feature)
 
     # # Step 5: Display the predictions
     # st.subheader("Predictions")
