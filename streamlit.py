@@ -136,9 +136,9 @@ with tab3:
     cleaned_data_feature = cleaned_data["text"]
     vectorizer = CountVectorizer(stop_words='english')
     X_test_vect = vectorizer.fit_transform(cleaned_data_feature)
-    # X_test_vect = vectorizer.transform(cleaned_data)
+    X_test_vect = vectorizer.transform(cleaned_data_feature)
 
-    st.dataframe(cleaned_data_feature)
+    st.dataframe(X_test_vect)
 
     # Optionally convert sparse matrix to dense, but beware of memory usage
     # X_test_vect_dense = X_test_vect.toarray()
