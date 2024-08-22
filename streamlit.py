@@ -122,12 +122,6 @@ with tab2:
 # Content for Tab 3
 with tab3:
 
-
-    # Load the trained XGBoost model from the .pkl file
-    # model_filename = 'xgboost_model.pkl'
-    # with open(model_filename, 'rb') as file:
-    #     model = pickle.load(file)
-
     # Title for the app
     st.title("XGBoost Model Prediction")
 
@@ -169,7 +163,13 @@ with tab3:
     # Display the predictions
     st.subheader("Predictions")
     cleaned_data['Prediction'] = predictions
-    st.dataframe(cleaned_data)
+    # st.dataframe(cleaned_data)
+    st.dataframe(
+    cleaned_data[["Prediction", "text"]].style.applymap(
+        sentiment_color, subset=["Prediction"]
+    ),
+    height=350
+    )
     
     # Optionally, allow users to download the results
     st.write("Download The Prediction of Uploaded Test Data:")
