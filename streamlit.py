@@ -132,11 +132,8 @@ with tab3:
     st.title("XGBoost Model Prediction")
 
     st.write("Preview of Uploaded Test Data:")
-    # st.dataframe(cleaned_data)
     st.dataframe(
-        df[["sentiment", "text"]].style.applymap(
-            sentiment_color, subset=["sentiment"]
-        ),
+        df[["text"]],
         height=350
     )
 
@@ -144,25 +141,18 @@ with tab3:
 
     # Initialize the LabelEncoder
     label_encoder = LabelEncoder()
-
     # Fit and transform the data
     cleaned_data['sentiment'] = label_encoder.fit_transform(cleaned_data['sentiment'])
 
 
     cleaned_data_feature = cleaned_data["text"]
-    cleaned_data_target = cleaned_data["sentiment"]    
+    cleaned_data_target = cleaned_data["sentiment"]
+
+
     vectorizer = CountVectorizer(stop_words='english')
     X_train_vect = vectorizer.fit_transform(cleaned_data_feature)
     X_test_vect = vectorizer.transform(cleaned_data_feature)
 
-
-
-
-
-
-
-
-    # st.dataframe(X_test_vect)
 
     # Optionally convert sparse matrix to dense, but beware of memory usage
     X_test_vect_dense = X_test_vect.toarray()
@@ -176,7 +166,7 @@ with tab3:
     # st.dataframe(X_test_vect_dense)
     predictions = xgb_model.predict(X_test_vect)
 
-    # # Step 5: Display the predictions
+    # Display the predictions
     st.subheader("Predictions")
     cleaned_data['Prediction'] = predictions
     st.dataframe(cleaned_data)
