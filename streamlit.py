@@ -167,7 +167,7 @@ with tab3:
     X_test_vect_dense = X_test_vect.toarray()
 
     # Instantiate the XGBoost model
-    xgb_model = xgb.XGBClassifier(use_label_encoder=False, eval_metric='mlogloss')
+    # xgb_model = xgb.XGBClassifier(use_label_encoder=False, eval_metric='mlogloss')
     
     # Fit the model
     # xgb_model.fit(X_train_vect, cleaned_data_target)
