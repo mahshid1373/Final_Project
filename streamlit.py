@@ -121,7 +121,7 @@ with tab2:
 
 # Content for Tab 3
 with tab3:
-    cleaned_data = clean_data(df)
+
 
     # Load the trained XGBoost model from the .pkl file
     # model_filename = 'xgboost_model.pkl'
@@ -134,11 +134,13 @@ with tab3:
     st.write("Preview of Uploaded Test Data:")
     # st.dataframe(cleaned_data)
     st.dataframe(
-        cleaned_data[["sentiment", "text"]].style.applymap(
+        df[["sentiment", "text"]].style.applymap(
             sentiment_color, subset=["sentiment"]
         ),
         height=350
     )
+
+    cleaned_data = clean_data(df)
 
     # Initialize the LabelEncoder
     label_encoder = LabelEncoder()
