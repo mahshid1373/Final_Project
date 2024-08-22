@@ -124,7 +124,7 @@ with tab3:
 
     # Title for the app
     st.title("XGBoost Model Prediction")
-    
+
     # Explanation
     st.markdown("""
     ### What is XGBoost?
@@ -170,21 +170,21 @@ with tab3:
     xgb_model = xgb.XGBClassifier(use_label_encoder=False, eval_metric='mlogloss')
     
     # Fit the model
-    xgb_model.fit(X_train_vect, cleaned_data_target)
+    # xgb_model.fit(X_train_vect, cleaned_data_target)
 
-    # st.dataframe(X_test_vect_dense)
-    predictions = xgb_model.predict(X_test_vect)
+    # # st.dataframe(X_test_vect_dense)
+    # predictions = xgb_model.predict(X_test_vect)
 
-    # Display the predictions
-    st.subheader("Predictions")
-    cleaned_data['Prediction'] = predictions
-    # st.dataframe(cleaned_data)
-    st.dataframe(
-    cleaned_data[["Prediction", "text"]].style.applymap(
-        sentiment_color, subset=["Prediction"]
-    ),
-    height=350
-    )
+    # # Display the predictions
+    # st.subheader("Predictions")
+    # cleaned_data['Prediction'] = predictions
+    # # st.dataframe(cleaned_data)
+    # st.dataframe(
+    # cleaned_data[["Prediction", "text"]].style.applymap(
+    #     sentiment_color, subset=["Prediction"]
+    # ),
+    # height=350
+    # )
     
     # Optionally, allow users to download the results
     st.write("Download The Prediction of Uploaded Test Data:")
