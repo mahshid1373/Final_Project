@@ -2,6 +2,23 @@
 
 This project is a Twitter Sentiment Analysis application built using Python. It leverages machine learning techniques, particularly XGBoost, to classify the sentiment of tweets as negative, neutral, or positive. The project also includes a web interface powered by Streamlit, making it easy to interact with the model and visualize the results.
 
+## Connect with Me
+
+- **LinkedIn:** [https://www.linkedin.com/in/mahshidkhatami-data-analyst/](https://www.linkedin.com/in/mahshidkhatami-data-analyst/)
+- **Email:** [khatami.mahshid@gmail.com](mailto:khatami.mahshid@gmail.com)
+
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Model Performance Comparison](#model-performance-comparison)
+- [Time Comparison Between Models](#time-comparison-between-models)
+- [Features](#features)
+- [Dataset](#dataset)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [Connect with Me](#connect-with-me)
+
+
 ## Project Overview
 
 The primary goal of this project is to analyze the sentiment of tweets. The application allows users to input tweet data, which is then processed and classified into one of three sentiment categories: Negative, Neutral, or Positive. The results are displayed on the Streamlit app along with various visualizations to help understand the underlying patterns in the data.
@@ -48,9 +65,3 @@ The dataset used in this project was sourced from [Kaggle](https://www.kaggle.co
 
 Contributions are welcome! Please fork this repository and submit a pull request for any improvements.
 
-## Connect with Me
-
-- [LinkedIn](https://www.linkedin.com/in/mahshidkhatami-data-analyst/)
-- [Email](mailto: khatami.mahshid@gmail.com)
-- **LinkedIn:** [https://www.linkedin.com/in/your-profile](https://www.linkedin.com/in/mahshidkhatami-data-analyst/)
-- **Email:** [your.email@example.com](mailto:khatami.mahshid@gmail.com)
