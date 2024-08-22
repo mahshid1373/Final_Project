@@ -35,6 +35,10 @@ Here’s a comparison of the time taken by different models during training:
 
 ![Time Comparison](Figures/time_comparison.png)
 
+Here’s a Word Cloud of Data:
+
+![Word Cloud](Figures/WordCloud.png)
+
 
 ## Features
 
