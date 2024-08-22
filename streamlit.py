@@ -45,6 +45,7 @@ if uploaded_file is not None:
 else :
     # Upload data for demonstration purposes
     df = pd.read_csv("Data/sentimental_data.csv")
+    main_df = df
 
 
 st.sidebar.markdown("Note: it may take a while to load the results, especially with a large number of tweets.")
@@ -150,41 +151,47 @@ with tab3:
 
     # Initialize the LabelEncoder
     label_encoder = LabelEncoder()
+
     # Fit and transform the data
     cleaned_data['sentiment'] = label_encoder.fit_transform(cleaned_data['sentiment'])
 
 
     cleaned_data_feature = cleaned_data["text"]
-    cleaned_data_target = cleaned_data["sentiment"]
 
+    # Load the vectorizer and the trained XGBoost model from the .pkl file
+    with open('vectorizer.pkl', 'rb') as f:
+        vectorizer = pickle.load(f)
+    model_filename = 'xgboost_model.pkl'
+    with open(model_filename, 'rb') as file:
+        model = pickle.load(file)
 
-    vectorizer = CountVectorizer(stop_words='english')
-    X_train_vect = vectorizer.fit_transform(cleaned_data_feature)
     X_test_vect = vectorizer.transform(cleaned_data_feature)
 
+    predictions = model.predict(X_test_vect)
 
-    # Optionally convert sparse matrix to dense, but beware of memory usage
-    X_test_vect_dense = X_test_vect.toarray()
-
-    # Instantiate the XGBoost model
-    # xgb_model = xgb.XGBClassifier(use_label_encoder=False, eval_metric='mlogloss')
+    # Display the predictions
+    st.subheader("Predictions")
     
-    # Fit the model
-    # xgb_model.fit(X_train_vect, cleaned_data_target)
+    cleaned_data['Prediction'] = predictions    
 
-    # # st.dataframe(X_test_vect_dense)
-    # predictions = xgb_model.predict(X_test_vect)
+    # New Markdown
+    st.markdown("""
+    These are the value means as sentiment:
 
-    # # Display the predictions
-    # st.subheader("Predictions")
-    # cleaned_data['Prediction'] = predictions
-    # # st.dataframe(cleaned_data)
-    # st.dataframe(
-    # cleaned_data[["Prediction", "text"]].style.applymap(
-    #     sentiment_color, subset=["Prediction"]
-    # ),
-    # height=350
-    # )
+    - **Negative : 0**
+    - **Neutral : 1**
+    - **Positive : 2**
+    """)
+
+    # Display the predictions
+    cleaned_data['Prediction'] = predictions
+    # st.dataframe(cleaned_data)
+    st.dataframe(
+    cleaned_data[["Prediction", "text"]].style.applymap(
+        sentiment_color, subset=["Prediction"]
+    ),
+    height=350
+    )
     
     # Optionally, allow users to download the results
     st.write("Download The Prediction of Uploaded Test Data:")
