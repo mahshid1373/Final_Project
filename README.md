@@ -51,3 +51,6 @@ Contributions are welcome! Please fork this repository and submit a pull request
 ## Connect with Me
 
 - [LinkedIn](https://www.linkedin.com/in/mahshidkhatami-data-analyst/)
+- [Email](mailto: khatami.mahshid@gmail.com)
+- **LinkedIn:** [https://www.linkedin.com/in/your-profile](https://www.linkedin.com/in/mahshidkhatami-data-analyst/)
+- **Email:** [your.email@example.com](mailto:khatami.mahshid@gmail.com)
