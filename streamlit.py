@@ -124,6 +124,21 @@ with tab3:
 
     # Title for the app
     st.title("XGBoost Model Prediction")
+    
+    # Explanation
+    st.markdown("""
+    ### What is XGBoost?
+    XGBoost, short for **Extreme Gradient Boosting**, is a powerful and efficient open-source machine learning algorithm. It belongs to the family of gradient boosting techniques, which combine the predictions of several weaker models to produce a strong predictive model.
+
+    XGBoost is widely used in data science competitions and industry applications due to its high performance and scalability. The algorithm is particularly effective for structured/tabular data and excels in tasks like classification, regression, and ranking.
+
+    Key features of XGBoost include:
+    - **Regularization:** Helps prevent overfitting by adding penalties to the model complexity.
+    - **Handling Missing Data:** Automatically learns which missing values should be treated as a separate category.
+    - **Parallel Processing:** Optimizes computational resources by performing operations in parallel.
+
+    In this application, we utilize XGBoost to make predictions based on your data, leveraging its capabilities to deliver accurate and reliable results.
+    """)
 
     st.write("Preview of Uploaded Test Data:")
     st.dataframe(
