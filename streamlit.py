@@ -121,20 +121,24 @@ with tab2:
 
 # Content for Tab 3
 with tab3:
+    cleaned_data = clean_data(df)
+
     # Load the trained XGBoost model from the .pkl file
-    model_filename = 'xgboost_model.pkl'
-    with open(model_filename, 'rb') as file:
-        model = pickle.load(file)
+    # model_filename = 'xgboost_model.pkl'
+    # with open(model_filename, 'rb') as file:
+    #     model = pickle.load(file)
 
     # Title for the app
     st.title("XGBoost Model Prediction")
 
     st.write("Preview of Uploaded Test Data:")
- 
-    # Vectorize the text data
-    cleaned_data = clean_data(df)
-    st.dataframe(cleaned_data)
-
+    # st.dataframe(cleaned_data)
+    st.dataframe(
+        cleaned_data[["sentiment", "text"]].style.applymap(
+            sentiment_color, subset=["sentiment"]
+        ),
+        height=350
+    )
 
     # Initialize the LabelEncoder
     label_encoder = LabelEncoder()
