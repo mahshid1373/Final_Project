@@ -6,6 +6,8 @@ This project is a Twitter Sentiment Analysis application built using Python. It 
 
 - **LinkedIn:** [https://www.linkedin.com/in/mahshidkhatami-data-analyst/](https://www.linkedin.com/in/mahshidkhatami-data-analyst/)
 - **Email:** [khatami.mahshid@gmail.com](mailto:khatami.mahshid@gmail.com)
+- **Streamlit:** [https://sentimentanalyze-mahshid.streamlit.app/](https://sentimentanalyze-mahshid.streamlit.app/)
+- **Presentation:** [https://slides.com/d/nTnRppw/live](https://slides.com/d/nTnRppw/live)
 
 ## Table of Contents
 - [Project Overview](#project-overview)
