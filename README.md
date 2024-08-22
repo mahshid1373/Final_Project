@@ -6,30 +6,25 @@ This project is a Twitter Sentiment Analysis application built using Python. It 
 
 The primary goal of this project is to analyze the sentiment of tweets. The application allows users to input tweet data, which is then processed and classified into one of three sentiment categories: Negative, Neutral, or Positive. The results are displayed on the Streamlit app along with various visualizations to help understand the underlying patterns in the data.
 
+## Model Performance Comparison
+
+Below is a comparison of model performance on training and test datasets:
+
+![Model Performance Comparison](Figures/model_comparison.png)
+
+## Time Comparison Between Models
+
+Here’s a comparison of the time taken by different models during training:
+
+![Time Comparison](Figures/time_comparison.png)
+
+
 ## Features
 
 - **Sentiment Classification:** Classifies tweets into Negative, Neutral, or Positive sentiment using an XGBoost model.
 - **Data Visualization:** Visualizes the distribution of sentiments, word clouds, and other relevant statistics.
-- **User Interface:** A Streamlit-based web interface that allows users to interact with the model and explore the data.
+- **User Interface:** A [Streamlit-based](https://sentimentanalyze-mahshid.streamlit.app/) web interface that allows users to interact with the model and explore the data.
 
-## Installation
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/twitter-sentiment-analyzer.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd twitter-sentiment-analyzer
-    ```
-3. Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4. Run the Streamlit app:
-    ```bash
-    streamlit run streamlit.py
-    ```
 
 ## Dataset
 
@@ -53,6 +48,6 @@ The dataset used in this project was sourced from [Kaggle](https://www.kaggle.co
 
 Contributions are welcome! Please fork this repository and submit a pull request for any improvements.
 
-## License
+## Connect with Me
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+- [LinkedIn](https://www.linkedin.com/in/mahshidkhatami-data-analyst/)
